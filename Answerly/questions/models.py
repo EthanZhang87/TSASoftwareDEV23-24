@@ -11,6 +11,7 @@ class Question(models.Model):
         SCIENCE = 'Science'
         SOCIAL_STUDIES = 'Social Studies'
         ELA = 'Ela'
+
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200)
     subject = models.CharField(max_length=20, choices = Subject.choices, null=False, blank=False )
@@ -53,7 +54,7 @@ class EventResponse(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(default='default.jpeg', upload_to='profile_pics')
 
     def __str__(self):
         return f'{self.user.username} Profile'

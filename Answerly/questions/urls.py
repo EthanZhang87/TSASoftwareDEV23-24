@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import (home, createQuestion, updateQuestion, deleteQuestion, 
 registerUser, logoutUser, loginUser, createEvent, updateEvent, deleteEvent, listEvents, listQuestions, question, event, userProfile)
 
@@ -21,4 +23,4 @@ urlpatterns = [
     path('question-list/', listQuestions, name='list-questions'),
     path('question/<str:pk>', question, name = 'question'),
     path('event/<str:pk>', event, name = 'event'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

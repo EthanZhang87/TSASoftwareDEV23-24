@@ -10,7 +10,12 @@
     }
 </style>
 
-<center><h1>{{ user.username }}</h1></center>
+<div>
+    <center><img class="rounded-circle account-img" src = "{{ user.profile.image.url }}"></center>
+</div>
+<div>
+    <center><h1>{{ user.username }}</h1></center>
+</div>
 
 <div class = "profile-container">
     <div>
