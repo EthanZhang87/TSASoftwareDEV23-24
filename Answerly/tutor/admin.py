@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Tutor, Message
+from .models import Tutor
 # Register your models here.
 
 admin.site.register(Tutor)
-admin.site.register(Message)
+
