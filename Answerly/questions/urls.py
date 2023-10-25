@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (home, createQuestion, updateQuestion, deleteQuestion, 
-registerUser, logoutUser, loginUser, createEvent, updateEvent, deleteEvent, listEvents, listQuestions, question, event, userProfile)
+registerUser, logoutUser, loginUser, createEvent, updateEvent, deleteEvent, listEvents, listQuestions, question, event, userProfile, profile)
 
 urlpatterns = [
     path('', home, name='home'),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('question-list/', listQuestions, name='list-questions'),
     path('question/<str:pk>', question, name = 'question'),
     path('event/<str:pk>', event, name = 'event'),
+    path('profile-update/', profile, name='update-profile')
 ] 

@@ -1,6 +1,7 @@
 from django.forms import ModelForm
-from .models import Question, Event
+from .models import Question, Event, Profile
 from django import forms
+from django.contrib.auth.models import User
 
 
 class QuestionForm(ModelForm):
@@ -18,4 +19,14 @@ class EventForm(ModelForm):
             'date': forms.widgets.DateInput(attrs={'type': 'date'})
         }
 
-    
+class UserUpdateForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username']
+
+
+class ImageUpdateForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']
+

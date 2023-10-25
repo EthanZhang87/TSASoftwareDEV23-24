@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Question, Event, Response, EventResponse
-from .forms import QuestionForm, EventForm, UserUpdateForm, ImageUpdateForm, QuestionImageForm
+from .forms import QuestionForm, EventForm, UserUpdateForm, ImageUpdateForm
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -131,7 +131,6 @@ def listEvents(request):
 
 def question(request, pk):
     question = Question.objects.get(id = pk)
-    image_url = question.image.url
     question_responses = question.response_set.all().order_by('created')
     participants = question.participants.all()
 
@@ -145,7 +144,7 @@ def question(request, pk):
         return redirect('question', question.id)
 
 
-    return render(request, 'questions/question.html', {'image_url': image_url, 'question': question, 'responses': question_responses, 'participants': participants})
+    return render(request, 'questions/question.html', {'question': question, 'responses': question_responses, 'participants': participants})
 
 
 def event(request, pk):
@@ -174,21 +173,20 @@ def event(request, pk):
 @login_required(login_url='login')
 def createQuestion(request):
     form = QuestionForm()
-    i_form = QuestionImageForm()
+
 
     if request.method == 'POST':
-        form = QuestionForm(request.POST)
-        i_form = QuestionImageForm(request.FILES, request.POST)
-        if form.is_valid() and i_form.is_valid():
+        form = QuestionForm(request.POST, request.FILES)
+        if form.is_valid():
             question = form.save(commit = False)
             question.author = request.user
             question.save()
-            i_form.save()
+
             return redirect('home')
 
     context = {
         'form' : form,
-        'i_form': i_form
+
     }
 
 
