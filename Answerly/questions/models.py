@@ -22,6 +22,11 @@ class Question(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class QuestionImage(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=2)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
 class Response(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
