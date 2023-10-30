@@ -1,12 +1,10 @@
-<h3>Recent Activity</h3>
+<h2>Recent Activity</h2>
 <hr>
 {% for message in responses %}
-    <article classs="media content-section">
-        <div class="media-body">
-            <h5><a href="{% url 'questions:profile' message.user.id %}">@{{ message.user }}</a> {{ message.created|timesince }}</h5>
-            <h5>replied to <a href="{% url 'questions:question' message.question.id %}">"{{ message.question }}"</a></h5>
-            <p>{{ message }}</p>
-            <hr>
-        </div>
-    </article>
+    <div class="media-body">
+        <h5><a href="{% url 'questions:profile' message.user.id %}">@{{ message.user }}</a> {{ message.created|timesince }}</h5>
+        <h5>replied to <a href="{% url 'questions:question' message.question.id %}">"{{ message.question }}"</a></h5>
+        <p>{{ message }}</p>
+        <hr>
+    </div>
 {% endfor %}

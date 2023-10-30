@@ -5,7 +5,9 @@
 
 {% if page == 'register' %}
 
-<div>
+<div class="log">
+    <h1>Sign up for answerly</h1>
+    <h2>Get help with any subject</h2>
     <form method="POST" action="">
         {% csrf_token %}
         {{ form.as_p }}
@@ -15,22 +17,19 @@
 
 {% else %}
 
-<div>
-    <center>
-        <h1>Log In</h1>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <input type="text" name = "username" placeholder = "Enter your username"></input>
-
-            <input type="password" name = "password" placeholder = "Enter your password"></input>
-            <input type="submit" value="Login">
-            <h6>Dont have an account? <a href="{% url 'questions:register' %}">Sign up here!</a></h6>
-        </form>
-    </center>
+<div class="log">
+    <h1>Welcome back</h1>
+    <h2>Sign in to your account</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name = "username" placeholder = "Enter your username"></input>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name = "password" placeholder = "Enter your password"></input>
+        <input type="submit" value="Login">
+        Dont have an account? <a href="{% url 'questions:register' %}">Sign up here!</a>
+    </form>
 </div>
-
 {% endif %}
-
-
 
 {% endblock content %}

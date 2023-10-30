@@ -2,31 +2,14 @@
 
 {% block content %}
 
-<style>
-    .home-container{
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-    }
-    
-</style>
-
 <div class="home-container">
-
-    <div>
+    <div class="browse">
         <h2>Sort Events</h2>
         <hr>
-
-        <div class="media content-section">
-            <a href="{% url 'questions:list-events' %}?q=newest">Newest</a>
-        </div>
-        <div class="media content-section">
-            <a href="{% url 'questions:list-events' %}?q=oldest">Oldest</a>
-        </div>
-        <div class="media content-section">
-            <a href="{% url 'questions:list-events' %}">All Events</a>
-        </div>
+        <a href="{% url 'questions:list-events' %}?q=newest">Newest</a>
+        <a href="{% url 'questions:list-events' %}?q=oldest">Oldest</a>
+        <a href="{% url 'questions:list-events' %}">All Events</a>
     </div>
-
     <div>
         
         <center><h3>{{event_count}} events avaliable</h3></center>

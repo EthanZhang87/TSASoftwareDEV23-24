@@ -10,9 +10,9 @@ class Tutor(models.Model):
         ELA = 'Ela'
 
     class Levels(models.TextChoices):
-        ELEMENTARY = 'Elementary School'
-        MIDDLE = 'Middle School'
-        HIGH = 'High School'
+        ELEMENTARY = 'Elementary'
+        MIDDLE = 'Middle'
+        HIGH = 'High'
         COLLEGE = 'College'
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
