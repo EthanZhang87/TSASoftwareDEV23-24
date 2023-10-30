@@ -60,18 +60,18 @@ a.article-title:hover {
 }
 
 :root {
-    --font-color: white;
-    --primary: #272727;
-    --secondary: #3c3c3c;
-    --accent: #313131;
+    --primary: #fffcf3;
+    --secondary: #fff;
+    --font-color: #000;
+    --accent: #f5f5dc;
 }
 
-body {
+/*body {
     color: var(--font-color);
     font-family: sans-serif;
     background: var(--primary);
     margin: 0;
-}
+}*/
 
 .wrapper {
     margin: 8px;
@@ -213,7 +213,7 @@ nav a:last-of-type {
     background-color: var(--accent);
 }
 
-@media (prefers-color-scheme: light) {
+/*@media (prefers-color-scheme: light) {
     body {
         --primary: #fffcf3;
         --secondary: #fff;
@@ -230,4 +230,4 @@ nav a:last-of-type {
         --font-color: #fff;
         --accent: #313131;
     }
-}
+}*/
