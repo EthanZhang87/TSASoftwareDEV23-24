@@ -70,12 +70,12 @@ nav > a {
     color: var(--font-color)
 }
 
-/*body {
+body {
     color: var(--font-color);
     font-family: sans-serif;
     background: var(--primary);
     margin: 0;
-}*/
+}
 
 .wrapper {
     margin: 8px;
