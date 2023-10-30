@@ -66,6 +66,10 @@ a.article-title:hover {
     --accent: #f5f5dc;
 }
 
+nav > a {
+    color: var(--font-color)
+}
+
 /*body {
     color: var(--font-color);
     font-family: sans-serif;
