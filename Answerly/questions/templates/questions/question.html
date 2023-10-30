@@ -2,60 +2,49 @@
 
 {% block content %}
 
-<style>
-    .room-container{
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-    }
-</style>
-
-
-
 <div class="room-container">
-        <div class="media content-section">
-            <h1>{{question.title}}</h1>
+    <div class="media content-section">
+    <h1>{{question.title}}</h1>
 
-            <small>{{ question.created }}</small>
+    <small>{{ question.created }}</small>
 
-            <p>{{ question.description }}</p>
+    <p>{{ question.description }}</p>
 
-            {% if question.image != 'default.jpg' %}
-                <img style="width: 300px; height: 300px;"src="{{question.image.url}}">
-            {% endif %}
-        
+    {% if question.image != 'default.jpg' %}
+        <img style="width: 300px; height: 300px;"src="{{question.image.url}}">
+    {% endif %}
 
+    <div class="comment-wrapper">
+        <h3>Conversation</h3>
+        <hr>
 
-            <div class="comment-wrapper">
-                <h3>Conversation</h3>
-                <hr>
-
-                {% for response in responses %}
-                 <div>
-                   <small>@{{response.user.username}} {{response.created|timesince}}</small>
-                    <p>{{response.body}}</p>
-                    <hr>
-                   </div>
-                    {% endfor %}
-                </div>
-
-                {% if request.user.is_authenticated %}
-                <div class="comment-form">
-                    <form method="POST" action="">
-                        {% csrf_token %}
-                        <input type="text" name="response" placeholder="message here">
-                    </form>
-                </div>
-                {% endif %}
-    </div>
-        <div>
-            <h3>Participants 👥</h3>
+        {% for response in responses %}
+            <div>
+            <small>@{{response.user.username}} {{response.created|timesince}}</small>
+            <p>{{response.body}}</p>
             <hr>
-    
-            {% for user in participants %}
-                <div>
-                    <h2>@{{user.username}}</h2>
-                </div>
+            </div>
             {% endfor %}
+        </div>
+
+        {% if request.user.is_authenticated %}
+            <div class="comment-form">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="text" name="response" placeholder="message here">
+                </form>
+            </div>
+        {% endif %}
+    </div>
+    <div>
+        <h2>Participants</h2>
+        <hr>
+
+        {% for user in participants %}
+            <div>
+                <h2>@{{user.username}}</h2>
+            </div>
+        {% endfor %}
     </div>
 </div>
 
