@@ -22,7 +22,7 @@ def profile(request):
             u_form.save()
             i_form.save()
             messages.success(request, 'Your account has been updated!')
-            return redirect('home')
+            return redirect('questions:home')
     else:
         u_form = UserUpdateForm(instance=request.user)
         i_form = ImageUpdateForm(instance=request.user.profile)
