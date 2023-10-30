@@ -18,6 +18,7 @@ class EventForm(ModelForm):
         widgets = {
             'date': forms.widgets.DateInput(attrs={'type': 'date'})
         }
+        exclude = ['host']
 
 class UserUpdateForm(ModelForm):
     class Meta:

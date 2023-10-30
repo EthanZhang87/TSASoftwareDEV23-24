@@ -87,7 +87,7 @@ def listQuestions(request):
 
     context = {
         'questions': questions,
-        'questions_count': responses.count(),
+        'questions_count': count,
         'responses': responses
     }
 
