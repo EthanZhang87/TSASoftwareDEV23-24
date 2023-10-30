@@ -4,6 +4,8 @@ from django.urls import path
 from .views import (home, createQuestion, updateQuestion, deleteQuestion, 
 registerUser, logoutUser, loginUser, createEvent, updateEvent, deleteEvent, listEvents, listQuestions, question, event, userProfile, profile)
 
+
+app_name = 'questions'
 urlpatterns = [
     path('', home, name='home'),
     path('register/', registerUser, name = 'register'),

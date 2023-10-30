@@ -16,26 +16,26 @@
             <hr>
 
             <div class="media content-section">
-                <a href="{% url 'list-questions' %}?q=Math">Math</a>
+                <a href="{% url 'questions:list-questions' %}?q=Math">Math</a>
             </div>
             <div class="media content-section">
-                <a href="{% url 'list-questions' %}?q=Ela">Ela</a>
+                <a href="{% url 'questions:list-questions' %}?q=Ela">Ela</a>
             </div>
             <div class="media content-section">
-                <a href="{% url 'list-questions' %}?q=Science">Science</a>
+                <a href="{% url 'questions:list-questions' %}?q=Science">Science</a>
             </div>
             <div class="media content-section">
-                <a href="{% url 'list-questions' %}?q=Social Studies">Social Studies</a>
+                <a href="{% url 'questions:list-questions' %}?q=Social Studies">Social Studies</a>
             </div>
             <div class="media content-section">
-                <a href="{% url 'list-questions' %}">All Questions</a>
+                <a href="{% url 'questions:list-questions' %}">All Questions</a>
             </div>
         </div>
     </article>
     <div>
         
         <center><h3>{{questions_count}} questions</h3></center>
-        <center><a class="btn btn-outline-info mb-4" href="{% url 'create-question' %}">Ask a Question</a></center>
+        <center><a class="btn btn-outline-info mb-4" href="{% url 'questions:create-question' %}">Ask a Question</a></center>
         <form method="GET" action="">
             {% csrf_token %}
             <center><input type="text" name="q" placeholder="Search Questions..."></center>

@@ -87,7 +87,7 @@ def listQuestions(request):
 
     context = {
         'questions': questions,
-        'questions_count': count,
+        'questions_count': responses.count(),
         'responses': responses
     }
 
@@ -141,7 +141,7 @@ def question(request, pk):
             body = request.POST.get('response'),
         )
         question.participants.add(request.user)
-        return redirect('question', question.id)
+        return redirect('questions:question', question.id)
 
 
     return render(request, 'questions/question.html', {'question': question, 'responses': question_responses, 'participants': participants})
@@ -155,7 +155,7 @@ def event(request, pk):
     if request.method == 'POST':
         if EventResponse.objects.filter(user=request.user, event = event).exists():
             messages.error(request, 'You already submitted a response!')
-            return redirect('event', event.id)
+            return redirect('questions:event', event.id)
             
         else:
             eventresponse = EventResponse.objects.create(
@@ -164,13 +164,13 @@ def event(request, pk):
                 attending = request.POST.get('attending'),
                 notattending = request.POST.get('notattending')
             )
-        return redirect('event', event.id)
+        return redirect('questions:event', event.id)
 
     return render(request, 'questions/event.html', {'event': event, 'attendees': attendees})
 
 
 
-@login_required(login_url='login')
+@login_required(login_url='questions:login')
 def createQuestion(request):
     form = QuestionForm()
 
@@ -182,7 +182,7 @@ def createQuestion(request):
             question.author = request.user
             question.save()
 
-            return redirect('home')
+            return redirect('questions:list-questions')
 
     context = {
         'form' : form,
@@ -192,6 +192,7 @@ def createQuestion(request):
 
     return render(request, 'questions/create_question.html', context)
 
+@login_required(login_url="questions:login")
 def updateQuestion(request, pk):
     question = Question.objects.get(id=pk)
     form = QuestionForm(instance = question)
@@ -200,7 +201,7 @@ def updateQuestion(request, pk):
         form = QuestionForm(request.POST, instance = question)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('questions:list-questions')
 
     context = {
         'form': form
@@ -208,12 +209,13 @@ def updateQuestion(request, pk):
 
     return render(request, 'questions/create_question.html', context)
 
+@login_required(login_url="questions:login")
 def deleteQuestion(request, pk):
     question = Question.objects.get(id=pk)
 
     if request.method == 'POST':
         question.delete()
-        return redirect('home')
+        return redirect('questions:list-questions')
     
     context = {
         'question': question
@@ -221,7 +223,7 @@ def deleteQuestion(request, pk):
 
     return render(request, 'questions/delete_question.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='questions:login')
 def createEvent(request):
     form = EventForm()
 
@@ -231,7 +233,7 @@ def createEvent(request):
             event = form.save(commit=False)
             event.host = request.user
             event.save()
-            return redirect('home')
+            return redirect('questions:list-events')
 
     context = {
         'form' : form
@@ -249,7 +251,7 @@ def updateEvent(request, pk):
         form = EventForm(request.POST, instance = event)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('questions:list-events')
     
     context = {
         'form': form
@@ -262,7 +264,7 @@ def deleteEvent(request, pk):
     event = Event.objects.get(id = pk)
     if request.method == 'POST':
         event.delete()
-        return redirect('home')
+        return redirect('questions:list-events')
     
     context = {
         'event': event
@@ -282,7 +284,7 @@ def registerUser(request):
             user.username = user.username.lower()
             user.save()
             login(request, user)
-            return redirect('home')
+            return redirect('questions:home')
         else:
             messages.error(request, 'An error occured when logging in!')
 
@@ -296,14 +298,14 @@ def registerUser(request):
 def logoutUser(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('home')
+        return redirect('questions:home')
 
     return render(request, 'questions/logout.html')
 
 def loginUser(request):
 
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('questions:home')
 
 
     if request.method == 'POST':
@@ -319,7 +321,7 @@ def loginUser(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('questions:home')
         else:
             messages.error(request, "User name or password does not exist")
 

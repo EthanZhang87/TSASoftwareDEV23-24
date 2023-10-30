@@ -19,9 +19,11 @@
 
             <p>{{ question.description }}</p>
 
-            <img src="{{question.image.url}}">
+            {% if question.image != 'default.jpg' %}
+                <img style="width: 300px; height: 300px;"src="{{question.image.url}}">
+            {% endif %}
+        
 
-            <h1></h1>
 
             <div class="comment-wrapper">
                 <h3>Conversation</h3>

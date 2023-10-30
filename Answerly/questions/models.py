@@ -4,11 +4,7 @@ from django.utils import timezone
 import datetime
 # Create your models here.
 
-class QuestionImage(models.Model):
-    image = models.ImageField(default='default.jpg', upload_to='question_images')
 
-    def __str__(self):
-        return   'Profile'
 
 
 class Question(models.Model):
@@ -24,7 +20,7 @@ class Question(models.Model):
     description = models.TextField(null=True, blank=True)
     participants = models.ManyToManyField(User, related_name='participants', blank=True)
     updated = models.DateTimeField(auto_now=True)
-    image = models.ImageField(default='default.jpg', upload_to='question_images')
+    image = models.ImageField(default='default.jpg', upload_to='question_images', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

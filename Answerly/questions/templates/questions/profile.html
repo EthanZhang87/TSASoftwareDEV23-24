@@ -15,18 +15,19 @@
 </div>
 <div>
     <center><h1>{{ user.username }}</h1></center>
+    <center><a href = "{% url 'questions:update-profile'%}">Update Profile</a></center><br>
 </div>
 
 <div class = "profile-container">
     <div>
         <div class="media content-section">
-            <a href="{% url 'profile' user.id %}?q=questions">Questions</a>
+            <a href="{% url 'questions:profile' user.id %}?q=questions">Questions</a>
         </div>
         <div class="media content-section">
-            <a href="{% url 'profile' user.id %}?q=events">Events</a>
+            <a href="{% url 'questions:profile' user.id %}?q=events">Events</a>
         </div>
         <div class="media content-section">
-            <a href="{% url 'profile' user.id %}">All</a>
+            <a href="{% url 'questions:profile' user.id %}">All</a>
         </div>
     </div>
     
