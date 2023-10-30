@@ -165,10 +165,6 @@ nav {
     /*border-radius: 6px;*/
 }
 
-nav a {
-    color: white;
-}
-
 nav a:first-child {
     font-size: 1.5rem;
 }
