@@ -9,11 +9,12 @@
         <div class = "media-body">
             {% for message in messages %}   
                 <h1>{{message.title}}</h1>
-                <hr>
+                
                 <h5>{{ message.sender }}</h5>
                 <small>{{ message.body }}</small><br><br>
                 <small>{{message.sent}}</small><br><br>
                 <small><a href="{% url 'tutor:create-message' %}">Respond Back</a></small>
+                <hr>
 
             {% endfor %}         
         </div>

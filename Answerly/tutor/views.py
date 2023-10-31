@@ -75,7 +75,7 @@ def displayMessages(request, pk):
     messages = Message.objects.all()
 
     context = {
-        'messages': messages.filter(recipient=request.user)
+        'messages': messages.filter(recipient=request.user).order_by('-sent')
     }
 
     return render(request, 'tutor/list_messages.html', context)
