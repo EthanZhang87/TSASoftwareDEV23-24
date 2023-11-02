@@ -13,17 +13,19 @@
 
 <div class="room-container">
     <div>
-        <h1>{{event.title}}</h1>
+        <center>
+            <h1>{{event.title}}</h1>
 
-        <small>{{ event.date }}</small><br><br>
+            <small>{{ event.date }}</small><br><br>
 
-        <small>{{ event.location }}</small>
+            <small>{{ event.location }}</small>
 
-        <p>{{ event.description }}</p>
+            <p>{{ event.description }}</p>
+        </center>
 
 
         <div class="comment-wrapper">
-            <h3>Conversation</h3>
+            <center><h3>Attendance</h3></center>
             <hr>
             {% if request.user.is_authenticated %}
                 <div class="comment-form">
