@@ -23,7 +23,7 @@
                 <select name="level">
                     <option value="Elementary">Elementary School</option>
                     <option value="Middle">Middle School</option>
-                    <option value="High School">High School</option>
+                    <option value="High">High School</option>
                     <option value="College">College</option>
                 </select>
 
@@ -39,6 +39,7 @@
             <article class="media content-section">
                 <div class = "media-body">
                     <h1>{{tutor.name}}</small><br>
+                    <small style="font-size: 10px;"><a href="{% url 'questions:profile' tutor.user.id %}">@{{tutor.user.username}}</a></small>
                     <h5>{{tutor.subject}} Tutor</h5>
                     <h5>{{ tutor.email }}</small><br><br>
                     <small>{{tutor.bio}}</small>
