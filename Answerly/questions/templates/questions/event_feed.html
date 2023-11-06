@@ -8,8 +8,7 @@
                 <a href="{% url 'questions:delete-event' event.id %}">Delete Event | </a>
                 {% endif %}
                 <h3><a href="{% url 'questions:event' event.id %}">{{ event.title }}</a></h3>
-                <small>{{ event.date }}</small>
-                <hr>            
+                <small>{{ event.date }}</small>      
             </div>
     </article>
 {% endfor %}

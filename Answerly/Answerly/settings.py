@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'questions',
-    'tutor'
+    'tutor',
 ]
 
 MIDDLEWARE = [
@@ -110,6 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Toronto'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 USE_I18N = True
 

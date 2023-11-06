@@ -118,7 +118,7 @@ def listEvents(request):
         events = Event.objects.filter(
             Q(title__icontains = e) |
             Q(description__icontains = e)
-        ).order_by('date')
+        ).order_by('-date')
         context = {
             'events': events,
             'event_count': count,

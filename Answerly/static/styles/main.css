@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Judson&display=swap');
+
 h3 {
   font-size: 2rem;
 }
@@ -93,6 +95,9 @@ body {
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 2.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    box-shadow: 0 5px 10px #0003;
 }
 
 .room-container > div:first-child {
@@ -101,8 +106,11 @@ body {
 }
 
 .home-container > div:nth-child(2), .profile-container > div:nth-child(2) {
-    padding: 0 1rem;
+    padding: 0 2rem;
     background-color: var(--accent);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    box-shadow: 0 5px 10px #0003;
 }
 
 .home-container > div:nth-child(2) > article, .profile-container > div:nth-child(2) > article {
@@ -138,6 +146,9 @@ article {
   padding: 1rem 0;
   margin: 1rem;
   background-color: var(--accent);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px #0003;
+  border-radius: 6px;
 }
 
 hr {
@@ -163,10 +174,11 @@ nav {
     background-color: var(--accent);
     border: 1px solid #0002;
     /*border-radius: 6px;*/
-}
-
-nav a:first-child {
+  }
+  
+  nav a:first-child {
     font-size: 1.5rem;
+    font-family: "Judson";
 }
 
 nav a:nth-child(2) {

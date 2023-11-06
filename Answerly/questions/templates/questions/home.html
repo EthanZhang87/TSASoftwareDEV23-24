@@ -4,7 +4,13 @@
 
 <article class="media content-section">
     <div class="media-body">
-      <center><h1>Welcome to Answerly, {{request.user.username}}!</h1></center>
+      <center><h1>
+          {% if request.user.is_authenticated %}
+            Welcome to Answerly, {{request.user.username}}!
+          {% else %}
+            Welcome to Answerly!
+          {% endif %}
+        </h1></center>
     </div>
   </article>
 

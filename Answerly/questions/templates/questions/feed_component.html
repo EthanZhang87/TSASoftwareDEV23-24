@@ -9,8 +9,7 @@
                 {% endif %}
                 <h3><a href="{% url 'questions:question' question.id %}">{{ question.title }}</a></h3>
                 <small>{{question.subject}}</small><br><br>
-                <small>{{ question.created }}</small>
-                <hr>            
+                <small>{{ question.created }}</small>          
             </div>
     </article>
 {% endfor %}
